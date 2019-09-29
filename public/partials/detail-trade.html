@@ -1,0 +1,240 @@
+<div ui-view="page" id="page" autoscroll="false"> 
+    
+    <div class="home-page__motivated" layout="row" layout-align="start start" style=" margin-top: 60px">
+        <div flex="10" layout="column"> </div>
+         
+        <div flex="30">
+	        <div layout="column">
+	        	<div>
+	        		<md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+		        <md-card-title>
+		          <md-card-title-text>
+		            <span class="md-headline">{{ onlineUser.firstName.substring(0,1)}}.&nbsp;{{onlineUser.lastName}}</span>
+		            <span class="md-subhead">forex trader</span>
+		          </md-card-title-text>
+		          <md-card-title-media>
+		            <div >
+		            	<img class="md-media-sm card-media" ng-src="images/community-user/ossene-profile.jpg">
+
+		            </div>
+		          </md-card-title-media>
+		        </md-card-title>
+		        <md-card-actions layout="row" layout-align="end center">
+		          
+      				<div layout="row" flex="70">
+      					<div  layout="column" flex="30" class="profile-detail">Followers <br><span class="u-hiddenVisually">{{onlineUser.userFollowers.length>0?onlineUser.userFollowers.length:0}}
+      					</div> 
+      					<div layout="column" class="profile-detail" flex="30" >Trades <br><span class="u-hiddenVisually">{{onlineUser.userTrades.length>0?onlineUser.userTrades.length:0}}</span>
+      					</div>
+      					<div  layout="column" flex="30" class="profile-detail">Comments <br><span class="u-hiddenVisually">{{onlineUser.userComments.length>0?onlineUser.userComments.length:0}}</span>
+      					</div> 
+      				</div>
+      				<div flex="30" layout-align="end end" layout="row">
+      					<md-button class="md-raised md-primary">FOLLOW</md-button>
+      				</div>
+		          
+		        </md-card-actions>
+		      </md-card>
+		      <md-card>
+		      		<div class="user-credits" layout-align="start center" layout="row"> 
+		      			<p>Records</p>
+		      		</div>
+		      		<div layout="column" style=" padding: 9px" class="profile-detail" > 
+		      			<div layout="row"> 
+		      				<div layout="row" flex="50" layout-align="start center" >Wins
+							</div> 
+							<div layout="row" flex="50" layout-align="end center"> 
+								<span layout-align="start end"class="u-hiddenVisually"><span class="account-records">{{trader.userWins.length}}</span>
+							</div>
+		      			</div>
+		      			<div flex="50"> </div>
+		      		</div>
+		      		<md-divider></md-divider>
+		      		<div layout="column" style=" padding: 9px" class="profile-detail"> 
+		      			<div layout="row"> 
+		      				<div layout="row" flex="50" layout-align="start center" > 
+		      				Losses
+							</div> 
+							<div layout="row" flex="50" layout-align="end center"> 
+								<span layout-align="start end"class="u-hiddenVisually"><span class="account-records">{{trader.userLosses.length}}</span>
+							</div>
+		      			</div>
+		      			<div flex="50"> </div>
+		      		</div>
+		      		<md-divider></md-divider>
+		      		<div layout="column" style=" padding: 9px" class="profile-detail"> 
+		      			<div layout="row"> 
+		      				<div layout="row" flex="50" layout-align="start center">Winning %
+							</div> 
+							<div layout="row" flex="50" layout-align="end center"> 
+								<span layout-align="start end"class="u-hiddenVisually"><span class="account-records">{{trader.percentWin}}</span>
+							</div>
+		      			</div>
+		      			<div flex="50"> </div>
+		      		</div>
+		      		<md-divider></md-divider>
+		      		<div layout="column" style=" padding: 9px" class="profile-detail"> 
+		      			<div layout="row"> 
+		      				<div layout="row" flex="50" layout-align="start center">
+		      				Avg Gain $
+							</div> 
+							<div layout="row" flex="50" layout-align="end center"> 
+								<span layout-align="start end"class="u-hiddenVisually"><span class="account-records">{{trader.avgGain}}</span>
+							</div>
+		      			</div>
+		      			<div flex="50"> </div>
+		      		</div>
+		      		<md-divider></md-divider>
+		      		<div layout="column" style=" padding: 9px" class="profile-detail"> 
+		      			<div layout="row"> 
+		      				<div layout="row" flex="50" layout-align="start center" >
+		      				Avg Losse $
+							</div> 
+							<div layout="row" flex="50" layout-align="end center"> 
+								<span layout-align="start end"class="u-hiddenVisually"><span class="account-records {{(trader.avgLosse >=0)?'trade-profits':'trade-losses'}}">{{trader.avgLosse}}</span>
+							</div>
+		      			</div>
+		      			<div flex="50"> </div>
+		      		</div>
+		      		<md-divider></md-divider>
+		      		<div layout="column" style=" padding: 9px" class="profile-detail"> 
+		      			<div layout="row"> 
+		      				<div layout="row" flex="50" layout-align="start center" class="profile-detail">
+		      				P/L
+							</div> 
+							<div layout="row" flex="50" layout-align="end center"> 
+								<span layout-align="start end"class="u-hiddenVisually"><span class="account-records {{(trader.cash >=0)?'trade-profits':'trade-losses'}}">${{trader.cash}}</span>
+							</div>
+		      			</div>
+		      			<div flex="50"> </div>
+		      		</div>
+
+	      	  </md-card>
+			        <div class="home-page__motivated">
+			          
+			        </div> 
+		        </div>
+		    </div>
+        </div>
+        <div flex="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+                <div layout="row" style="background: #8EE1B6; height: 30px; padding: 9px">
+    		  	<div flex="50" layout="row" layout-align="start start">
+    		  		<p><span ng-click="tradeDetail(trade._id)" class="{{(trade.profit >=0)?'trade-profits':'trade-losses'}}">
+    		  				{{(trade.profit<0)?'Losses &nbsp;':'Profits &nbsp;'}}
+	    		  			 
+	    		  				{{(trade.profit)?'($'+trade.profit+')':''}}
+	    		  			 
+    		  			</span>
+    		  		</p> 
+    		  	</div>
+    		  	<div flex="50" layout="row" layout-align="end center">
+    		  		 <p><span>{{trade.product}}</span>&nbsp;-&nbsp;{{trade.type}}</p> 
+    		  	</div>
+    		  </div>
+			  <div layout="row" style="padding: 9px" >
+			  	
+				<div flex="45" layout="column" style="margin-right: 9px; text-align: justify;" layout-align="start start">
+			  		 {{trade.description}}
+				</div>
+				<div flex="65" layout="row" layout-align="start start" > <!--style="width: 80%" -->
+		            <div  ng-show="!hasePicture" >
+			 			<img class="img-detail " src="images/default-img.jpg" style="width: 100%; cursor: pointer;" alt="/agraph"> 
+			 		</div>
+			 		<div ng-show="hasePicture" ng-click="showBigImage()" layout="row" layout-align="start end">
+			 			<img class="img-detail img-detail-1" src="{{trade.pictureUrl}}" style="width:100%; cursor: pointer;" alt="/agraph"> 
+			 		</div> 
+				</div>
+
+			  </div> 
+			  <div layout="row" layout-align="end center">
+			  	<div flex="60"></div>
+			  	<div flex="40" layout="row"  layout-align="end center"> 
+		  			<div flex="20" layout="row" layout-align="end center">
+
+					  	<md-tooltip md-direction="top">{{trade.tradesDislike.length}}</md-tooltip>		
+		  				<md-icon class="md-icon-custom" style="color: #8EE1B6" md-svg-src="images/svg/sharp-thumb_up-24px.svg" aria-label="android">
+		  			</div> 
+		  			<div flex="20" layout="row" layout-align="end center"> 
+							  <md-tooltip md-direction="top">{{trade.tradesLike.length}}</md-tooltip>
+							  <md-icon class="md-icon-custom" style="color: orange" md-svg-src="images/svg/sharp-thumb_down-24px.svg"></md-icon> 
+		  			</div>  
+			  	</div>
+			  </div>
+			  <div style="padding: 3px">
+			  	 <md-divider></md-divider>
+			  	 <div layout="row" style="padding: 9px"> 
+			  	 	<div flex="50" layout="row" layout-align="start start">
+			  	 		<p> Broker&nbsp;:&nbsp;<span>{{trade.broker}}</span></p>
+			  	 	</div>
+			  	 	<div flex="50" layout="row" layout-align="end center">
+			  	 		<md-button ng-click="editPosition(trade)" > Edit position
+			  	 		</md-button>
+			  	 	</div>
+			  	 </div>
+			  </div>
+                 
+              </md-card>
+              <md-card> 
+                <div layout="column" style=" padding: 9px" class="profile-detail" > 
+	      			<div layout="row"> 
+	      				<div layout="row" flex="50" layout-align="start center" >Entry
+						</div> 
+						<div layout="row" flex="50" layout-align="end center"> 
+							<span layout-align="start end"class="u-hiddenVisually"><span>{{trade.entry}}</span>
+						</div>
+	      			</div>
+	      			<div flex="50"> </div>
+	      		</div>
+	      		<div layout="column" style=" padding: 9px" class="profile-detail" > 
+	      			<div layout="row"> 
+	      				<div layout="row" flex="50" layout-align="start center" >Entry date
+						</div> 
+						<div layout="row" flex="50" layout-align="end center"> 
+							<span layout-align="start end"class="u-hiddenVisually"><span>{{trade.entryDate | date}}</span>
+						</div>
+	      			</div>
+	      			<div flex="50"> </div>
+	      		</div>
+	      		<div layout="column" style=" padding: 9px" class="profile-detail" > 
+	      			<div layout="row"> 
+	      				<div layout="row" flex="50" layout-align="start center" >Exit
+						</div> 
+						<div layout="row" flex="50" layout-align="end center"> 
+							<span layout-align="start end"class="u-hiddenVisually"><span>{{trade.exit}}</span>
+						</div>
+	      			</div>
+	      			<div flex="50"> </div>
+	      		</div>
+	      		<div layout="column" style=" padding: 9px" class="profile-detail" > 
+	      			<div layout="row"> 
+	      				<div layout="row" flex="50" layout-align="start center" >Exit date
+						</div> 
+						<div layout="row" flex="50" layout-align="end center"> 
+							<span layout-align="start end"class="u-hiddenVisually"><span>{{trade.exitDate | date}}</span>
+						</div>
+	      			</div>
+	      			<div flex="50"> </div>
+	      		</div>
+	      		<div layout="column" style=" padding: 9px" class="profile-detail" > 
+	      			<div layout="row"> 
+	      				<div layout="row" flex="50" layout-align="start center" >Bet
+						</div> 
+						<div layout="row" flex="50" layout-align="end center"> 
+							<span layout-align="start end"class="u-hiddenVisually"><span>{{trade.margin}}&euro;</span>
+						</div>
+	      			</div>
+	      			<div flex="50"> </div>
+	      		</div>
+			  
+			  <div style="padding: 3px">
+			  	 <md-divider></md-divider>
+			  	 <md-button  > Show comments
+			  	 </md-button>
+			  </div> 
+              </md-card>     
+        </div>
+
+        <div flex="10" layout="column"> </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+
+
+<div ui-view="page" id="page" autoscroll="false"><home-page><!-- loader -->
+	<section ng-if="!$ctrl.busy" class="" style="">
+    <!-- Cover -->
+    <div class="home-page__cover">
+        <video class="home-page__cover__video" autoplay="" loop="" muted="" plays-inline="">
+            <source ng-src="/videos/NorrLab.mp4" type="video/mp4"><!--
+                /videos/NorrLab.mp4
+                https://web.gurushots.com/assets/videos/gurushots-cover-video.mp4-->
+        </video>
+        <div class="home-page__cover__filter"></div>
+        <div class="home-page__cover__wrap">
+            <div class="home-page__cover__title">
+                <div class="line-1">THE WORLD'S GREATEST SECRET</div>
+                <div class="line-2">THE GAME <span> OF THE LIFE</span></div>
+            </div>
+            <div class="home-page__cover__action">
+                <div class="cover__title">Get our guide now </div>
+                <div  ng-click="$ctrl.login($event)"  tabindex="0">
+                    <img style="cursor: pointer;" class="img-button" src="images/download.png">
+                </div>
+            </div>
+        </div>
+        <div >
+            <div layout="row" flex="20">
+                <div style="height: 70px;
+    background: #8EE1B6;"  flex="20" class="home-page__cover__footer premium-login" layout="row" layout-align="center center">  
+                    <div style="    font-size: 19px;text-transform: uppercase;color: orange" >
+                        PREMIUM
+                    </div>
+                </div>
+            </div>
+
+            <div layout="row" flex="80">
+                <div class="home-page__cover__footer">  
+                            <img src="images/forex.png" alt=""> 
+                            <img src="images/s&p.png" alt="">
+                            <img src="images/dow.png" alt="">
+                            <img src="images/dax.png" alt="">  
+                </div>
+
+            </div>
+        </div>
+
+        <!-- play button -->
+        <a class="link" target="_blank" href="https://play.google.com/store/apps/details?id=com.gurushots.app&amp;hl=en">
+            <img src="https://web.gurushots.com/assets/images/pages/hp/google-play.png" alt="">
+        </a>
+        <a class="link-2" target="_blank" href="https://app.appsflyer.com/id1111221823?pid=Internal&amp;c=WebHomePage">
+            <img src="https://web.gurushots.com/assets/images/pages/hp/app-store.png" alt="">
+        </a>
+    </div>
+    
+     <!-- Motivated -->
+    <div class="home-page__motivated">
+        <div class="motivated__title">
+            Challenge yourself. <a href=""><span>Join the community</span></a> . Stay motivated.
+        </div>
+        <div class="motivated__text">
+           90 % des Traders d&eacute;butants perdent et/ou finissent ruin&eacute;s sur les march&eacute;s...<br>
+           NorrLabCourse un est programme qui vous permet de faire partie des 10%!
+          
+        </div>  
+    </div> 
+    <div class="home-page__prizes"> </div>
+    
+    </section>
+
+</div>

@@ -1,0 +1,24 @@
+
+{
+"description":"Couldn't have missed this one more... This was a late day spike WITH news and it formerly (10 days prior) had spiked from $5 to almost $35. The second I bought, the bottom dropped out. I didn't cut my losses and bag held it over the weekend. Due to a late day spike I sold half my position and will look for another spike 
+String", 
+"enty":5425.59,
+
+"exit":0,
+
+"product":"FRA40",
+ 
+"margin":30,
+}
+
+enty = 
+newtrade.exit
+newtrade.product
+newtrade.margin
+
+newTrade.description =  newtrade.description;
+newTrade.enty=  newtrade.enty;
+newTrade.exit= newtrade.exit;
+newTrade.product= newtrade.product;
+newTrade.margin= newtrade.margin;
+newTrade.save();

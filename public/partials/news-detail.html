@@ -1,0 +1,49 @@
+<div ui-view="page" id="page" autoscroll="false"> 
+    
+    <div class="home-page__motivated" layout="row" layout-align="start start" style=" margin-top: 60px">
+        <div flex="20" layout="column"> </div>
+         
+        <div flex="60" layout="row" layout-align="start start">
+            <div layout="column" layout-align="start end">
+         
+        <div class="home-page__motivated">
+            <div class="motivated__title">
+                See the <a href="#/communityTrades">lasted trades</a>.
+            </div>
+            <div class="motivated__text">
+               Interact & <span>learn with NorrLab community</span>  traders.<br>
+               Share your trading experience with people like you and improve your own trading with detailed analysis
+              
+            </div>
+            <user-card name="User name" class="ng-isolate-scope">
+            <md-card  class="_md"> 
+              
+               <div layout="row" class="new-panel-main" ng-click="watchNews()">
+                <div felx="70" layout="row" layout-align="start end" > 
+                    <div flex="70" ng-show="!hasePicture()"  class="div-news-img">
+                        <img class="news-img" src="app/images/default-img.jpg" style="width: 400px; cursor: pointer;" alt="/agraph"> 
+                    </div>
+                    <div class="div-news-img" ng-show="hasePicture" layout="row" layout-align="start end">
+                        <img class="news-img img-detail-1" src="{{new.picture}}" style="width: 400px; cursor: pointer;" alt="/agraph"> 
+                    </div> 
+                </div>
+                <div felx="30" layout="column" style="margin-left: 9px; text-align: justify;" layout-align="start end">
+                     Live Trading : l’effondrement de la Livre Turque impact l'ensemble des Marchés
+WEBINAIRES / LIVE11 AOÛT 2018
+Live Trading : l’effondrement de la Livre Turque impact l’ensemble des Marchés
+  Tester gratuitement la plateforme de trading Next Generation chez le broker CMC Markets : http://track.adform.net/C/?bn=16541709;C=0. Session de trading en direct à l’occasion de la publication de news US (CPI) et CAD (chômage), 
+                </div>
+                
+
+              </div> 
+            </md-card>
+            </user-card>  
+        </div>
+
+    </div>
+        </div>
+         
+
+        <div flex="20" layout="column"> </div>
+    </div>
+</div>

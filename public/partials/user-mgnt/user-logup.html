@@ -1,0 +1,42 @@
+<form>
+	<div layout="row" class="title-banner">
+		<div layout="row" layout-align="start center" flex="70">Connection</div>
+		 
+		<div  layout="row" layout-align="end start" flex="30" >
+			<md-icon ng-click="cancel()" class="md-icon-custom" style="color: #fff;margin-top: -6px; margin-right: 0px;" md-svg-src="images/svg/baseline-cancel-24px.svg"></md-icon> 
+		</div>
+			
+		 
+	</div> 
+	<div layout="row" layout-align="center center" style="padding: 9px">
+		<div layout="row" flex="50">
+	 		<md-input-container>
+			  <div layout="row"> 
+			  <label>Email</label>
+			  <input type="text"  ng-model="user.email" required>
+			  </div>
+			</md-input-container>
+		</div>
+		<div layout="row" flex="50"> <br>
+	 		<md-input-container>
+			  <div layout="row"> 
+			  <label>Password</label>
+			  <input type="password"  ng-model="user.password" required>
+			  </div>
+			</md-input-container>
+		</div>
+	</div> 
+	<div layout="row" layout-align="center center" style="margin-bottom: 16px">  
+		<md-button class="md-raised md-primary" style="width: 166.58px" ng-click="norrLogin()">CONNECTION</md-button> 
+	</div>
+	<div layout="row" layout-align="center center">
+		<div flex="40"><md-divider></md-divider></div><div flex="10">&nbsp;OR&nbsp;</div><div flex="40"><md-divider></md-divider></div>
+	</div>
+	<div layout="row" layout-align="center center" style="margin-bottom: 16px"> 
+		<div flex="40" layout="row" layout-align="center center">
+			<a href="">Forgot account?</a>
+		</div>
+		<div flex="10" layout="row" layout-align="center center">·</div>
+		<div flex="40" layout="row"layout-align="center center"><a href="">Sign up for NorrLab</a></div>
+	</div>
+</form>

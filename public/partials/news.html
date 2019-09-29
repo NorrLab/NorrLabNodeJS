@@ -1,0 +1,99 @@
+<div ui-view="page" id="page" autoscroll="false"> 
+    
+    <div class="home-page__motivated" layout="row" layout-align="start start" style=" margin-top: 60px">
+        <div flex="10" layout="column"> </div>
+         
+        <div >
+            <div layout="column" layout-align="start end">
+        <div layout="row" ng-repeat="new in  norrNews">
+            <user-card name="User name" class="ng-isolate-scope">
+            <md-card  class="_md"> 
+              <div layout="row" style="background: #8EE1B6; height: 30px; padding: 9px">
+                <div flex="50" layout="row" layout-align="start center">
+                    <p><span ng-click="tradeDetail(new._id)" class="new-panel-title">
+                            {{new.title}}  
+                        </span>
+                    </p> 
+                </div>
+              </div>
+               <div layout="row" class="new-panel-main" ng-click="watchNews()">
+                <div felx="70" layout="row" layout-align="start end" > 
+                    <div flex="70" ng-show="!hasePicture()"  class="div-news-img">
+                        <img class="news-img" src="images/default-img.jpg" style="width: 400px; height: 222px; cursor: pointer;" alt="/agraph"> 
+                    </div>
+                    <div class="div-news-img" ng-show="hasePicture" layout="row" layout-align="start end">
+                        <img class="news-img img-detail-1" src="{{new.picture}}" style="width: 400px;height: 222px; cursor: pointer;" alt="/agraph"> 
+                    </div> 
+                </div>
+                <div felx="30" layout="column" style="margin-left: 9px; text-align: justify;" layout-align="start end">
+                      {{new.description}}
+                </div>
+                
+
+              </div> 
+            </md-card>
+            </user-card>
+        </div> 
+        <div class="home-page__motivated">
+            <div class="motivated__title">
+                See the <a href="#/communityTrades">lasted trades</a>.
+            </div>
+            <div class="motivated__text">
+               Interact & <span>learn with NorrLab community</span>  traders.<br>
+               Share your trading experience <br> with people like you and improve your own trading with detailed analysis
+              
+            </div>  
+        </div>
+
+    </div>
+        </div>
+        <div flex="30" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-headline">Ulrich OSSENE</span>
+                    <span class="md-subhead">forex trader</span>
+                  </md-card-title-text>
+                  <md-card-title-media>
+                    <div >
+                        <img class="md-media-sm card-media" ng-src="images/community-user/ossene-profile.jpg">
+
+                    </div>
+                  </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                  
+                    <div layout="row" flex="70">
+                        <div  layout="column" flex="30" class="profile-detail">Followers <br><span class="u-hiddenVisually">3 
+                        </div> 
+                        <div layout="column" class="profile-detail" flex="30" >Trades <br><span class="u-hiddenVisually">23</span>
+                        </div>
+                        <div  layout="column" flex="30" class="profile-detail">Comments <br><span class="u-hiddenVisually">10</span>
+                        </div> 
+                    </div>
+                    <div flex="30" layout-align="end end" layout="row">
+                        <md-button class="md-raised md-primary">FOLLOW</md-button>
+                    </div>
+                  
+                </md-card-actions>
+              </md-card>
+              <md-card> 
+                    <div layout="column" style=" padding: 9px" class="iframe-etoro" > 
+                         <iframe src="https://pages.etoro.com/widgets/trader-insight?affiliateID=61706&culture=en-en"></iframe>
+                    </div>  
+              </md-card>
+              <md-card>
+                <div layout="column" style=" padding: 9px" class="iframe-etoro" >
+                    <div class="header-iframe" layout="row" layout-align="center center" > 
+                        <div layout="row" class="title">Economic calendar</div>
+
+                    </div>
+                    <iframe style="width: 100%;" src="https://sslecal2.forexprostools.com?ecoDayFontColor=%23e83131&columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&features=datepicker,timezone,timeselector,filters&countries=110,17,25,34,32,6,37,26,5,22,39,93,14,48,10,35,105,43,38,4,36,12,72&calType=week&timeZone=58&lang=5" width="650" height="467" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
+                    <!--<div class="poweredBy" style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 11px;color: #333333;text-decoration: none;">Calendrier économique fourni par <a href="https://fr.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;" class="underline_link">Investing.com France</a>, portail leader de la bourse.</span></div>-->
+                </div>
+             </md-card>      
+        </div>
+
+        <div flex="10" layout="column"> </div>
+    </div>
+</div>

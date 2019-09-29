@@ -1,0 +1,52 @@
+<div ui-view="page" id="page" autoscroll="false"> 
+    
+    <div class="home-page__motivated" layout="row" layout-align="start start" style=" margin-top: 60px">
+
+<md-dialog aria-label="Choose Profile Pic dialog" ng-cloak flex="65">
+    <md-toolbar ng-class="md-primary">
+        <div class="md-toolbar-tools">
+            <h2 translate>Nouvelle photo de profil</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src=" " aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <div>
+        <div layout="row" style="padding:16px;">
+            <div layout="column">
+                <div class="cropArea">
+                    <img-crop image="picture" area-type="square" result-image="croppedPicture"
+                              result-image-size="{w:800,h:800}"></img-crop>
+                </div>
+                <div>
+                    <input type="file" accept="image/*" id="fileInput" style="display:none;"
+                           onchange="angular.element(this).scope().handleFileSelect(this)"/>
+                    <md-button class="md-raised md-primary" type="button"
+                               onclick="document.getElementById('fileInput').click();">
+                        <span translate>deviceForm.pictureModal.buttons.browse</span>
+                    </md-button>
+                </div>
+            </div>
+            <div class="device-picture-modal-divider"></div>
+            <div>
+
+                <img ng-src="{{croppedPicture}}" class="user-profile-pic-preview"/>
+
+            </div>
+        </div>
+        <br/>
+        <div layout="row" style="padding: 48px 0px 8px 0px">
+            <div flex></div>
+            <md-button ng-click="cancel()"><span
+                    translate>deviceForm.pictureModal.buttons.cancel</span></md-button>
+            <md-button class="md-warn" ng-click="deletePicture()"><span
+                    translate>Supprimer ma photo</span></md-button>
+            <md-button class="md-primary" ng-click="validate()" ng-disabled="!croppedPicture"><span
+                    translate>Modififer la photo</span></md-button>
+        </div>
+        <br/>
+    </div>
+</md-dialog>
+</div>
+</div>

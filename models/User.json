@@ -1,0 +1,21 @@
+{
+	"firstName" :"OSSENE",
+	"lastName" :"Ulrich",
+	"email" :"ulrich.ossene@gmail.com",
+	"password" :"123",
+	"city" :"Strasbourg",
+	"userRole" :"admin-!98xxè-de123",
+	"userPictureUrl" :"String",
+	"userCreationDate" :1212635647587,
+	"userLastUpdateDAte":null,
+	"userFollowers" :[ ],
+	"userComments" :[ ],
+	"userTrades" :[ ],
+	"userWins" :1,
+	"userLosses" :3,
+	"userProfits" :300,
+
+	"userPercentWins" :0,
+	"userPercentLosses" :0
+
+}

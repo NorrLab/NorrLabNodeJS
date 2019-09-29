@@ -1,0 +1,90 @@
+.img_logo{
+	height: 45px;
+	width: 45px;
+	border-radius: 50%;
+	margin-top: 9px;
+/* 	margin-bottom: 10%; */
+}
+
+
+.logo__icon_main{
+    height: 60px;
+    width: 100%s;
+}
+
+.logo__icon_profil{
+	height: 9px;
+    width: 9px;
+}
+
+.logo__icon_mainactive {
+  transform: translateY(2px);
+}
+
+
+.img-button:active {
+  transform: translateY(3px);
+}
+
+.premium-login:active{
+	transform: translateY(1px);
+}
+
+.premium-login {
+	cursor: pointer;
+	z-index: 9 
+
+}
+
+.gs-header__main-menu > a{
+
+     color: #8EE1B6;
+}
+
+.follower>a{
+     color: #8EE1B6; 
+}
+
+.midle-home{
+	
+    background-image: url("https://assets.shopfront.envato-static.com/images/home-page/community.png");
+    background-color: #cccccc;	
+}
+
+.gs-container{
+	z-index: 10 
+}
+
+.midel-separator{ 
+	 bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 5px;
+    white-space: nowrap;/*
+    background-color: rgba(0,0,0,0.5);*/
+    line-height: 1;
+    height: 65px
+}
+
+.card-media{
+	 
+	border-radius: 50%;
+	border: 2px solid transparent;
+	border-color:  #ccc;
+	margin-right: 9px;
+	opacity: 0.9; 
+
+};
+
+.md-icon-custom{
+	cursor: pointer;
+}
+
+user-card{
+	width: 750px;
+}
+md-card-title-text >p>.date-trade{
+	color: #ccc;
+	font-size: 13px
+};
+

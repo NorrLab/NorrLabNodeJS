@@ -1,0 +1,93 @@
+<div ui-view="page" id="page" autoscroll="false"><home-page>
+	<div class="home-page__motivated">
+        <div class="motivated__title">
+        	Trade Better with <span>NorrLab</span> community. 
+        </div>
+        <div class="motivated__text">
+        	NorrLab lets you learn from proven experts. With lists of trades like this, you can share your activity with an engaged community.<br>
+
+			Join us today and get what you need for trading success. 
+        </div>
+	    <div layout="row" layout-align="center center" >   
+      		<div flex="50" >
+      			<md-button class="md-raised md-primary">Join NorrLab community</md-button> 
+      		</div>
+		</div>  
+    </div> 
+     <div layout="row" layout-align="center center" style="padding: 9px" class="layout-align-center-center layout-row">
+    	<div layout="row" class="layout-row flex-50">
+		</div>
+		<div layout="row" class="layout-row flex-20">
+		    		<span class="edit-trade" ng-show="editeNorr" ng-click="editeNewTrade()" role="button" tabindex="0">add new trade</span>
+				</div>
+		</div>
+
+    <div layout="row" layout-align="center center" style="padding: 9px" ng-repeat=" trade in listOfTrades">
+    	<div layout="row">
+    		<user-card name="User name" class="ng-isolate-scope">
+
+			<md-card  class="_md"><!--  md-colors="{backgroundColor: 'default-primary-700'}"
+
+   84:             <md-icon class="md-icon-custom" md-svg-src="/img/ic_warning_black_24px.svg" aria-label="android ">-->
+    		  <div layout="row" style="background: #8EE1B6; height: 30px; padding: 9px">
+    		  	<div flex="50" layout="row" layout-align="start center">
+    		  		<p><a ng-click="tradeDetail(trade._id)" class="{{(trade.profit >=0)?'trade-profits':'trade-losses'}}">
+    		  				{{(trade.profit<0)?'Losses &nbsp;':'Profits &nbsp;'}}
+	    		  			<span >
+	    		  				{{(trade.profit)?'($'+trade.profit+')':''}}
+	    		  			</span>
+    		  			</a>
+    		  		</p> 
+    		  	</div>
+    		  	<div flex="50" layout="row" layout-align="end center">
+    		  		 <p><span>{{trade.product}}</span>&nbsp;-&nbsp;{{trade.type}}</p> 
+    		  	</div>
+    		  </div>
+			  <md-card-title>
+			    <md-card-title-media>
+			      <div class="md-media-sm card-media layout-row"   > 
+			        <img class="card-media" ng-src="images/community-user/ossene-profile.jpg">
+			      </div>
+			    </md-card-title-media> 
+			    <md-card-title-text>
+			      <p class="md-headline ng-binding" >{{trade.tradeUser.firstName.substring(0,1)}}.&nbsp;{{trade.tradeUser.lastName}}<span class="date-trade">&nbsp;&nbsp;{{trade.creationDate | date}}</span></p>
+			      <span class="md-subhead description ng-binding">{{trade.description}}</span>
+			    </md-card-title-text>
+			  </md-card-title>
+			  <div layout="row" layout-align="end center">
+			  	<div flex="60" layout="row"  style="padding-left: 21px" layout-align="start center">
+			  		<span class="{{(trade.status=='Progress')?'trade-progress':'trade-closed'}}"><b> {{trade.status}} </b></span>
+			  	</div>
+			  	<div flex="40" layout="row"  layout-align="end center">
+			  		 
+		  			<div flex="20" layout="row" layout-align="end center">
+
+					  	<md-tooltip md-direction="top">{{trade.tradesLike.length}}</md-tooltip>		
+		  				<md-icon class="md-icon-custom" style="color: #8EE1B6" md-svg-src="images/svg/sharp-thumb_up-24px.svg" aria-label="android">
+		  			</div> 
+		  			<div flex="20" layout="row" layout-align="end center"> 
+							  <md-tooltip md-direction="top">{{trade.tradesDislike.length}}</md-tooltip>
+							  <md-icon class="md-icon-custom" style="color: orange" md-svg-src="images/svg/sharp-thumb_down-24px.svg"></md-icon> 
+		  			</div>  
+			  	</div>
+			  </div>
+			  <div style="padding: 3px">
+			  	 <md-divider></md-divider>
+			  	 <div layout="row" style="padding: 9px"> <p> Broker&nbsp;:&nbsp;<span>{{trade.broker}}</span></p>
+			  	 </div>
+			  </div> 
+			</md-card>
+			</user-card>
+    	</div>
+
+    </div>
+    <div flex layout="column">
+		<section layout="row" layout-padding="">
+
+	      <cl-paging flex cl-pages="10" , cl-steps="6" , cl-page-changed="" , cl-align="center center" , cl-current-page="2"></cl-paging>
+
+	    </section>
+		
+	</div>
+</home-page>
+</div>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="uosApp">
+<head>
+	<title>ANorrLab&nbsp;|&nbsp;Ca$h Mind&euro;d</title>
+
+
+	<link rel='shortcut icon' type='image/x-icon' href='images/imageedit_3_7936759617.gif' />	
+	<link rel="stylesheet" href="css/angular/angular-material.min.css">
+
+	<link rel="stylesheet" href="css/gurushots/vendor.css">/norrlab-angular-ui-notification-2018/angular-ui-notification.min.css
+
+	<link rel="stylesheet" type="text/css" href="css/angular/md-data-table-style.min.css">
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/md-data-table/1.8.0/md-data-table-style.css">
+
+	<link rel="stylesheet" type="text/css" href="ng-img-crop/ng-img-crop.css">
+	<link rel="stylesheet" href="norrlab-angular-ui-notification-2018/angular-ui-notification.min.css">
+	<link rel="stylesheet" href="norrlab-daterangepicker-2018/daterangepicker.css">
+	<link rel="stylesheet" href="norrlab-angular-daterangepicker-2018/coffee/angular-daterangepicker.coffee">
+	<!-- <link rel="stylesheet" href="css/dailyfx/dailyfx.css"> -->
+
+	<link rel="stylesheet" href="css/gurushots/gurushots.css">
+
+	<link rel="stylesheet" href="css/app/app.css">
+
+
+
+	<script type="text/javascript" src="norrlab-jquery-2018/jquery.min.js"></script>
+	<script type="text/javascript" src="norrlab-angularjs-2018/angular.js"></script>
+
+	<script type="text/javascript" src="norrlab-ng-file-upload-2018/ng-file-upload.min.js"></script>
+	<script type="text/javascript" src="norrlab-ng-file-upload-2018/ng-file-upload-shim.js"></script>
+	
+	<script type="text/javascript" src="norrlab-angular-route-2018/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/libs/angular/angular-material.min.js"></script>
+	<script type="text/javascript" src="/norrlab-angular-animate-2018/angular-animate.min.js"></script> 
+	<script type="text/javascript" src="/norrlab-angular-aria-2018/angular-aria.min.js"></script>
+	<script type="text/javascript" src="/norrlab-angular-ui-notification-2018/angular-ui-notification.min.js"></script>
+	<script type="text/javascript" src="/norrlab-angular-local-storage-2018/angular-local-storage.min.js"></script> 
+	<script type="text/javascript" src="/norrlab-daterangepicker-2018/moment.min.js"></script>  
+	<script type="text/javascript" src="/norrlab-angular-daterangepicker-2018/js/angular-daterangepicker.min.js"></script>
+	<script type="text/javascript" src="/norrlab-daterangepicker-2018/daterangepicker.js"></script>
+</head>
+<body  ng-controller="IndexController">
+	<header ui-view="header" id="header" class="gs-header"><gs-header><!---->
+<div class="container gs-container"  >
+  <!-- right nav -->
+  <!---->
+  <div class="user follower"  style="">
+    	<div ng-click="signIn()"><a target="_self"  ng-show="!logedUser.state" class="signin" >Sign in</a> </div>
+    	
+	    <div layout="column" ng-show="logedUser.state">
+	    	<div layout="row">
+	    		<a target="_self"  class="c-signup-btn" ng-click="showLogOption(logOption)">
+			    	{{onlineUser.lastName}}
+			    </a>
+	    	</div>
+	    	<div ng-show="logOption" class="log-option" layout="column">
+	    		<div layout="row" class="in-log-option" ng-click="showUserProfile()">
+	    			<a target="_self"  class="">
+				    	PROFILE
+				    </a> 
+	    		</div>
+	    		<div layout="row" class="in-log-option"  ng-click="signOut()">
+	    			<a target="_self">
+				    	DECONNEXION
+				    </a> 
+	    		</div> 
+	    	</div>  
+		</div>
+  </div>  
+
+  <a  ng-click="goToHome()" target="_self">
+    <i > 
+        <div >
+            <img  style="margin-top: 4px;" class="logo__icon_main" src="images/imageedit_43_5024767093.gif">
+        </div>  
+    </i> 
+  </a>
+  <!-- main menu -->
+  <!----><nav class="gs-header__main-menu"  style="    margin-top: -45px;"> 
+    <a class="discover" ng-click="marketNews()">Market News</a> 
+      <!----<a class="discover" ng-click="economicCalendar()">Economic Calendar</a> -->
+    <a ng-click="communityTrades()">Trades</a>
+    <!----><a  ng-click="formations()">Lessons</a><!---->
+  </nav><!---->
+</div><!----></gs-header></header>
+	<div ng-view></div>
+	<div ui-view="footer" id="footer" class="gs-footer"><gs-footer><!-- follow -->
+<div class="gs-footer__follow">
+    <div layout="row" class="gs-footer__gurushots_2">Warning: Do not trade with money that you cannot afford to lose.<!--
+        Avertissement : Le trading peut vous exposer &aacute; des pertes sup&eacute;rieures aux d&eacute;p&ograve;ts chez votre broker. --> 
+    </div>
+     
+<!-- share -->
+<
+<!-- links -->
+<!-- gurushots -->
+<div class="gs-footer__gurushots">
+    <b>&#169;
+</b> 2018 NorrLab, All Rights reserved.
+</div></gs-footer></div> 
+	<script type="text/javascript" src="/js/angular-modules/urls.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
+
+	<script type="text/javascript" src="js/controllers/home.js"></script>
+	<!--controllers -->
+	  <script type="text/javascript" src="js/controllers/IndexController.js"></script>
+	  <script type="text/javascript" src="js/controllers/communityTradesController.js"></script>
+	  <script type="text/javascript" src="js/controllers/detailTradesController.js"></script>
+	  <script type="text/javascript" src="js/controllers/UserTradeController.js"></script>
+	  <script type="text/javascript" src="js/controllers/NewsController.js"></script>
+	  <script type="text/javascript" src="js/controllers/UserProfileConroller.js"></script>
+	  <!--services -->
+	  <script type="text/javascript" src="js/services/ToolbarService.js"></script>
+</body>
+</html>

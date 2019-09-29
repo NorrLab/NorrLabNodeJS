@@ -1,0 +1,117 @@
+<div ui-view="page" id="page" autoscroll="false"><home-page>
+	<div class="home-page__motivated">
+		<div class="motivated__title">
+        	Share your trades with the community. 
+        	{{profileUser | json}}
+        </div>
+	</div>
+	 <div layout="row" layout-align="center center" style="padding: 9px" >
+    	<div layout="row" style="margin-top: 2.3%" >
+    		<div flex="50" >
+	    		<form name="tradeCreation" ng-submit="createTrade()" ng-model="newtrade">
+	    			 <md-content style="width: 690px;">
+	    			 	<div layout="row" style="padding: 9px">
+	    			 		<div layout="column" flex="50">
+					 			<div layout="row">
+					 				<md-input-container>
+									  <div layout="row"> 
+									  <label>Profits</label>
+									  <input type="number"  ng-model="newtrade.profit" required>
+									  </div>
+									</md-input-container>
+								</div>	
+			    			 	<div layout="row">
+			    			 		<md-input-container>
+									  <div layout="row"> 
+									  <label>Product</label>
+									  <input type="text"  ng-model="newtrade.product" required>
+									  </div>
+									</md-input-container>
+								</div>	
+								<div layout="row">
+									<md-input-container>
+									  <div layout="row"> 
+									  <label>Amount</label>
+									  <input type="number"  ng-model="newtrade.margin" required>
+									  </div>
+									</md-input-container>
+								</div>	
+								<div layout="row">
+									<md-input-container>
+									  <div layout="row"> 
+									  <label>Entry</label>
+									  <input type="number"  ng-model="newtrade.entry" required>
+									  </div>
+									</md-input-container>
+								</div>	
+								<div layout="row">
+									<md-input-container>
+									  <div layout="row"> 
+									  <label>Exit</label>
+									  <input type="number"  ng-model="newtrade.exit" required>
+									  </div>
+									</md-input-container>
+								</div>	
+								<div layout="row">
+									<md-input-container> 
+									  <md-select ng-model="newtrade.type" placeholder="Type">
+									    <md-option ng-value="opt" ng-repeat="opt in tradeOptions">{{ opt }}</md-option>
+									  </md-select>
+									</md-input-container> 
+								</div>
+								<div layout="row">
+									<md-input-container> 
+									  <md-select ng-model="newtrade.status" placeholder="Status">
+									    <md-option ng-value="opt" ng-repeat="opt in ['Progress','Closed']">{{ opt }}</md-option>
+									  </md-select>
+									</md-input-container> 
+								</div>
+								<div layout="row">
+									<md-input-container> 
+									  <md-select ng-model="newtrade.broker" placeholder="Broker">
+									    <md-option ng-value="opt" ng-repeat="opt in Brokers">{{ opt }}</md-option>
+									  </md-select>
+									</md-input-container> 
+								</div>
+
+								<div layout="row">
+										<md-input-container>
+									    <label>Description</label>
+									    <textarea name="bio" ng-model="newtrade.description" required></textarea>
+									    <div ng-messages="userForm.bio.$error" ng-show="tradeCreation.bio.$dirty">
+									      <div ng-message="required">This is required!</div>
+									      <div ng-message
+									     </ ="md-maxlength">That's too long!</div>
+								    </div>
+								  </md-input-container>  
+								</div>  
+	    			 	</div>
+	    			 	<!--<div flfex="50" layout="column"> 
+	    			 		<div ng-show="pictureUploaded" layout="row" ngf-select="uploadFile($file)" layout-align="center end" style="">
+	    			 			<img class="img-detail-1" src="{{newtrade.pictureUrl}}"  ng-model="file" name="file" ngf-pattern="'image/*'"
+    ngf-accept="'image/*'"   style="width: 400px;height: 250px; cursor: pointer;" alt="/agraph"> 
+	    			 		</div>
+	    			 		<div ng-show="!pictureUploaded"  layout="row" ngf-select="uploadFile($file)" layout-align="center center">
+	    			 			<img src="images/default-img.jpg" ng-model="file" name="file" ngf-pattern="'image/*'"
+    ngf-accept="'image/*'" ngf-max-size="20MB"  
+    ngf-resize="" style="width: 400px; cursor: pointer;" alt="/agraph"> 
+	    			 		</div>
+
+	    			 		<div layout="row" layout-align="center center">
+	    			 			<md-button ng-click="publishPublic(newtrade)">
+    			 					publish to community
+    			 				</md-button>
+    			 				<md-button ng-click="publishPrivate(newtrade)">
+    			 					publish to followers
+    			 				</md-button>
+	    			 		</div><br>  
+	    			 	</div>-->
+    			 	</div>
+					</md-content>
+	    		</form>
+    		</div>
+
+    		 
+	</div>
+
+</home-page>
