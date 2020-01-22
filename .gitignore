@@ -1,0 +1,15 @@
+
+
+# dependencies
+/node_modules
+
+
+/document-libraries/*
+/norr-asset
+/norrmefia/*
+/public/videos/*
+
+/public/images/*
+/public/images/community-user/user-trades/2018-08-15-EUR-GBP.PNG
+/public/images/community-user/user-trades/2018-08-15-FRA40.PNG
+/public/images/community-user/user-trades/2018-08-20-GBP-CHF.PNG
