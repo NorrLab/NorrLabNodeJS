@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser'); 
 //require(__dirname+'\\norr-modules\\batches\\accountServiceBatch.js');
 var cors = require('cors');
-
 var path = require('path');
 
 // Requires multiparty 
@@ -37,7 +36,16 @@ var app = express();
 var upload = multer({ storage: storage })
 
 // use it before all route definitions
-app.use(cors({origin: '*,localhost:4200'}));
+app.use(cors()); 
+
+app.use(function(req, res, next) {
+ // res.header("Access-Control-Allow-Origin", "192.168.1.10:8069");
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/norrlab-angularjs-2018', express.static(__dirname+'/node_modules/angular')); 
@@ -54,6 +62,7 @@ app.use('/norrlab-angular-daterangepicker-2018/coffee', express.static(__dirname
 app.use('/norrlab-daterangepicker-2018', express.static(__dirname+'/node_modules/daterangepicker'));
 
 app.use('/norrlab-users-2018', express.static(__dirname+'/document-libraries/users')); 
+app.use('/norrlab-users-video-2018', express.static(__dirname+'/norr-asset/v-asset')); 
 
  
 app.use(bodyParser.json());

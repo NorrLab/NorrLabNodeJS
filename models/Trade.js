@@ -28,6 +28,10 @@ var TradeSchema = new mongoose.Schema({
 	tradeUser:{
 		type:mongoose.Schema.Types.ObjectId,
 		ref:'NorrUser'
+	},
+	tradeDetail:{
+		type:mongoose.Schema.Types.ObjectId,
+		ref:'TradeDetail'		
 	}
 }); 
 
