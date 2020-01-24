@@ -4,6 +4,7 @@ var Trade = require('./../models/Trade');
 var NorrUser = require('./../models/NorrUser');
 var TradeDetail = require('./../models/TradeDetail');
 var NorrLabTradeAction = require('./../models/NorrLabTradeAction');
+var NorrLabTradeComment = require('./../models/NorrLabTradeComment');
 
 var norrLabTrades={
 				message:String,
@@ -138,6 +139,30 @@ router.post('/free-trade-detail', (req,res)=>{
 						})
 		})
 
+	}catch(error){
+		console.log(error)
+	}
+});
+
+router.get('/free-trade-comment', (req,res) =>{
+	try{
+		NorrLabTradeComment.find({commentTrade:req.query.tradeId})
+		.populate('commentUser')
+		.then(comments =>{
+			res.status(200).json(comments);
+		})
+	}catch(error){
+		console.log(error)
+	}
+});
+
+router.post('/free-trade-comment', (req,res) =>{
+	req.body.commentDate = new Date();
+	try{
+		NorrLabTradeComment.create(req.body)
+		.then(comment =>{
+			res.json(comment);
+		})
 	}catch(error){
 		console.log(error)
 	}
