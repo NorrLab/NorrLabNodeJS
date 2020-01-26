@@ -148,6 +148,7 @@ router.get('/free-trade-comment', (req,res) =>{
 	try{
 		NorrLabTradeComment.find({commentTrade:req.query.tradeId})
 		.populate('commentUser')
+		.sort({commentDate:-1})
 		.then(comments =>{
 			res.status(200).json(comments);
 		})
@@ -158,6 +159,7 @@ router.get('/free-trade-comment', (req,res) =>{
 
 router.post('/free-trade-comment', (req,res) =>{
 	req.body.commentDate = new Date();
+	//TODO must check user exists first, if not throw exception
 	try{
 		NorrLabTradeComment.create(req.body)
 		.then(comment =>{

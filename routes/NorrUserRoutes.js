@@ -34,11 +34,11 @@ router.post('/create-new-user/',(req,res)=>{
 		res.sendStatus(500);		
 	} 
 });
-router.get('/show-personal/:userId',(req,res)=>{
-	NorrUser.findById(req.params.userId).then(user =>{
+router.get('/',(req,res)=>{
+	NorrUser.findById(req.query.userId).then(user =>{
 		res.json(user)
 	}).catch( err =>{
-		res.json(403)
+		res.sendStatus(403)
 	})
 })
 
