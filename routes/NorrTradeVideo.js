@@ -2,23 +2,30 @@ var router = require('express').Router();
 var NorrTradeVideoComment = require('./../models/NorrTradeVideoComment');
 var NorrTradeVideo = require('./../models/NorrTradeVideo');
 var NorrUserVideoComment = require('./../models/video/NorrUserVideoComment');
+var NorrUser = require('./../models/NorrUser');
 
 //VIDEO COMMENTS
 router.get('/comments',(req,res)=>{
-		NorrTradeVideoComment.find({videoCommentVideo:req.query.videoId})
-		.populate('commentUser')
-		.exec( function (comments) {
+		NorrTradeVideoComment.find({"videoCommentVideo":req.query.videoId})
+		.populate('videoCommentUser')
+		.then( function (comments) {
+			if(comments	== null) {
+
+					res.sendStatus(404)
+			}else{
+
 			// body...
-			res.json(comments)
+			res.json(comments)	
+			}
 		})
 } );
 
 router.post('/comments',(req,res)=>{
-		var cmt = new NorrTradeVideoComment();
-		cmt.videoCommentDescription = "KKKKKKKKLLLLLMMMM";
+		var cmt = req.body;
+		 
 		cmt.videoCommentDate = new Date();
-		cmt.videoCommentVideo='5e2dda5b648edf262c7ab3ab';
-		cmt.videoCommentUser =  '5b86aed300772379e86952cc'
+		//cmt.videoCommentVideo='5e2dda5b648edf262c7ab3ab';
+		//cmt.videoCommentUser =  '5b86aed300772379e86952cc'
 
 		NorrTradeVideoComment.create(cmt) 
 		.then( function (comments) {
@@ -68,6 +75,20 @@ router.post('/', (req,res) =>{
 	})
 })
 
+router.put('/video-views', (req,res) =>{
+	//req.body = new NorrTradeVideo(); 
+	NorrTradeVideo.updateOne({"_id":req.body._id}, {$set:{"videoViews":req.body.videoViews} })
+	.then( function (video) {
+		 
+		res.json(200);
+		 
+	}, function (err) {
+		// body...
+		console.log(err)
+		res.json(500)
+	})
+})
+
 router.put('/', (req,res) =>{
 	//req.body = new NorrTradeVideo();
 	//req.body.videoDate = new Date()
@@ -93,5 +114,53 @@ router.put('/', (req,res) =>{
 	})
 	
 })
+
+router.patch('/:userId', (req,res) =>{  
+
+		NorrTradeVideo.update({"videoUser":req.params.userId, "_id":req.body._id},req.body)
+		.then(videos =>{
+			res.status(200).json(videos)
+		}).catch(err=>{
+			console.log(err)
+			res.sendStatus(500);
+		} )  
+	
+})
+
+router.get('/:userId/videos',(req,res) =>{ 
+	
+	NorrTradeVideo.find({"videoUser":req.params.userId})
+	.then(videos =>{
+		res.status(200).json(videos)
+	}).catch(err=>{
+		console.log(err)
+		res.sendStatus(500);
+	} ) 
+} )
+
+router.get('/:userId/videos/:videoId',(req,res) =>{ 
+	
+	NorrTradeVideo.findOne({"videoUser":req.params.userId,"_id":req.params.videoId})
+	.then(video =>{
+		res.status(200).json(video);
+	}).catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	}) 
+
+} )
+
+router.put('/:userId/videos/:videoId',(req,res) =>{ 
+	
+	NorrTradeVideo.updateOne({"videoUser":req.params.userId,"_id":req.params.videoId},req.body)
+	.then(video =>{
+		res.status(200).json(video);
+	}).catch(err=>{
+		console.log(err);
+		res.sendStatus(500);
+	}) 
+
+} )
+
 module.exports = router;
 

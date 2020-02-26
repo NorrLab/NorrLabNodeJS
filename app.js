@@ -65,7 +65,7 @@ app.use('/norrlab-users-2018', express.static(__dirname+'/document-libraries/use
 app.use('/norrlab-users-video-2018', express.static(__dirname+'/norr-asset/v-asset')); 
 
  
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/user', require('./routes/TradesRoutes'));  
 app.use('/norr-user', require('./routes/NorrUserRoutes'));

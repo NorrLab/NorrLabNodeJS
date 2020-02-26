@@ -13,7 +13,11 @@ var NorrTradeVideoSchema = new mongoose.Schema({
 	videoUser:{
 		type:mongoose.Schema.Types.ObjectId,
 		ref:'NorrUser'
-	}
+	},
+	public:Boolean,
+	recordingDate:Date,
+	videoLocation:String
+
 })
 
 var NorrTradeVideo = mongoose.model('NorrTradeVideo', NorrTradeVideoSchema);
