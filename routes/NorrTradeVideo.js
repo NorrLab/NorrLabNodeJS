@@ -3,7 +3,7 @@ var NorrTradeVideoComment = require('./../models/NorrTradeVideoComment');
 var NorrTradeVideo = require('./../models/NorrTradeVideo');
 var NorrUserVideoComment = require('./../models/video/NorrUserVideoComment');
 var NorrUser = require('./../models/NorrUser');
-
+var NorrTradeVideoTag = require('./../models/NorrTradeVideoTag');
 //VIDEO COMMENTS
 router.get('/comments',(req,res)=>{
 		NorrTradeVideoComment.find({"videoCommentVideo":req.query.videoId})
@@ -19,6 +19,38 @@ router.get('/comments',(req,res)=>{
 			}
 		})
 } );
+
+router.post('/tags',(req,res)=>{
+	var videoId = req.body[0].videoId; 
+	
+	NorrTradeVideoTag.deleteMany({"videoId": videoId})
+	.then( function (deleted) {
+		// body...
+		console.log(deleted)
+		NorrTradeVideoTag.create(req.body)
+			.then( function (tag) {
+				 res.status(200).json(tag);
+			},function (err) {
+				console.log(err)
+				 res.status(400);
+			}).catch(ex =>{
+				console.log(ex)
+		})
+	})
+})
+
+router.get('/tags/:videoId',(req,res)=>{
+	NorrTradeVideoTag.find({"videoId":req.params.videoId})
+	.then( function (tags) {
+		 res.status(200).json(tags);
+	},function (err) {
+		console.log(err)
+		 res.status(400);
+	}).catch(ex =>{
+		console.log(ex)
+	})
+})
+
 
 router.post('/comments',(req,res)=>{
 		var cmt = req.body;
