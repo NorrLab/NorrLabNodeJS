@@ -196,8 +196,7 @@ var _videoName;
 var _videoFileName;
 
 router.post('/create-video/:userId', upload.single('fileInputVideo'), (req,res) =>{
-	//req.body = new NorrTradeVideo();
-	console.log(store)
+	//req.body = new NorrTradeVideo(); 
 	res.status(200).json({
 		upload:upload
 	})
@@ -205,8 +204,7 @@ router.post('/create-video/:userId', upload.single('fileInputVideo'), (req,res) 
 })
 
 router.post('/:userId', (req,res) =>{
-	//req.body = new NorrTradeVideo(); 
-	console.log(upload)
+	//req.body = new NorrTradeVideo();  
 	try{
 		req.body.videoDate = new Date();
 		req.body._id = undefined;
@@ -214,6 +212,7 @@ router.post('/:userId', (req,res) =>{
 		req.body.videoUrl ='/norrlab-users-video-2018/'+_videoName;
 		req.body.videoUser = req.params.userId;
 		req.body.videoFileName = _videoFileName;
+		req.body.videoTitle = _videoFileName;
 		NorrUser.find({"_id":req.params.userId})
 		.then(user =>{
 			NorrTradeVideo.create(req.body)
@@ -310,6 +309,24 @@ router.get('/:userId/videos/:videoId',(req,res) =>{
 	}) 
 
 } )
+
+router.delete('/delete/:videoId', (req,res) =>{
+	NorrTradeVideo.deleteOne({"_id":req.params.videoId})
+	.then( rtn =>{
+		res.status(200).json({
+			response:`${rtn} `
+		})
+	})
+})
+
+router.delete('/delete-express/', (req,res) =>{
+	NorrTradeVideo.deleteMany({"videoUser":req.query.userId})
+	.then( rtn =>{
+		res.status(200).json({
+			response:rtn
+		})
+	})
+})
 
 router.put('/:userId/videos/:videoId',(req,res) =>{ 
 	
