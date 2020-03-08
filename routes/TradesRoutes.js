@@ -173,9 +173,9 @@ router.post('/free-trade-comment', (req,res) =>{
 router.get('/free-trades', (req,res)=>{ 
 	try{
 		Trade.countDocuments().then((totalCount)=>{
-			var skipValue =Number(req.query.pageNumber) > 0 ? Math.ceil( Number(req.query.pageNumber) + Number(req.query.nbPerPage) +1) : 0;// (Number(req.query.pageNumber) > 0 ? ( ( Number(req.query.pageNumber) - 1 ) * Number(req.query.nbPerPage) ) : 0);
+			var skipValue =Number(req.query.nbPerPage);//Number(req.query.pageNumber) > 0 ? Math.ceil( Number(req.query.pageNumber) + Number(req.query.nbPerPage) +1) : 0;// (Number(req.query.pageNumber) > 0 ? ( ( Number(req.query.pageNumber) - 1 ) * Number(req.query.nbPerPage) ) : 0);
 			Trade.find()
-             .skip( skipValue )
+             .skip( Number(req.query.pageNumber) *skipValue )
              .sort(sortedElementOrder(req.query.criteria))
              .limit( Number(req.query.nbPerPage) ).populate('tradeUser').then( trades =>{
              	norrLabTrades.message="trades found";

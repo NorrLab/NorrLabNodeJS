@@ -16,7 +16,8 @@ var NorrTradeVideoSchema = new mongoose.Schema({
 	},
 	public:Boolean,
 	recordingDate:Date,
-	videoLocation:String
+	videoLocation:String,
+	videoFileName:String
 
 })
 
