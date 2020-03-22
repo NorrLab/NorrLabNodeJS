@@ -4,7 +4,74 @@ const fs = require('fs');
 const path = require('path');
 var NorrUser = require('./../models/NorrUser');
 
+var NorrSubscriber = require('./../models/subscriber/NorrSubscriber');
 
+
+
+/**===================================================
+*
+*					NorrSubscriber
+*======================================================*/
+router.get('/subscribers/:userId',(req,res) =>{
+	NorrSubscriber.find({'norrUserFollowed':req.params.userId})
+	.populate({
+				path:'norrUserFollowing',
+				populate:{
+					path:'userPictureUrl'
+				},
+				populate:{
+					path:'_id',
+					model:'NorrUser' 
+				}
+
+			})
+	.then(subscriber =>{
+		res.status(200).json(subscriber)
+	},err => {
+		res.status(500).json(err.message)
+	})
+})
+
+router.get('/subscribers',(req,res) =>{
+	NorrSubscriber.find({})
+	.then(subscribers =>{
+		res.status(200).json(subscribers)
+	},err => {
+		res.status(500).json(err.message)
+	})
+})
+
+router.delete('/subscribers',(req,res) =>{
+	NorrSubscriber.deleteMany({})
+	.then(subscribers =>{
+		res.status(200).json(subscribers)
+	},err => {
+		res.status(500).json(err.message)
+	})
+})
+
+router.delete('/subscribers/:userId/:followedId',(req,res) =>{
+	NorrSubscriber.deleteMany({"norrUserFollowed":req.params.userId,"norrUserFollowing":req.params.followedId})
+	.then(subscribers =>{
+		res.status(200).json(subscribers)
+	},err => {
+		res.status(500).json(err.message)
+	})
+})
+
+router.post('/subscribers',(req,res) =>{
+	NorrSubscriber.create(req.body)
+	.then(subscriber =>{
+		res.status(200).json(subscriber)
+	}, err =>{
+		res.status(500).json(err.message)
+	})
+}) 
+
+/**===================================================
+*
+*					User login
+*======================================================*/
 router.post('/login', (req,res)=>{
 	NorrUser.findOne({email:req.body.email,password:req.body.password})
 	.select('-password -userRole -email')

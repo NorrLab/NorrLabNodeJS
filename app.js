@@ -69,8 +69,9 @@ app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/user', require('./routes/TradesRoutes'));  
 app.use('/norr-user', require('./routes/NorrUserRoutes'));
-app.use('/norr-video', require('./routes/NorrTradeVideo')); 
-app.use('/tradeswsdl',require('./routes/ws/tradesactivity/TradeActivity.js'))
+app.use('/norr-video', require('./routes/NorrTradeVideo'));             
+app.use('/comment',require('./routes/NorrCommentRoute'));
+app.use('/tradeswsdl',require('./routes/ws/tradesactivity/TradeActivity.js'));// 
 
 //Learning how to serve video from server.
 app.use('norrlab-videos', require('./routes/NorrUserRoutes'))

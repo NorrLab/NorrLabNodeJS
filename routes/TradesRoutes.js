@@ -69,6 +69,9 @@ router.get('/all-trades/', (req,res) =>{
 	}) 
 });
 
+
+
+
 router.get('/free-trade', (req,res)=>{ 
 	try{
 		Trade.countDocuments().then((totalCount)=>{
@@ -170,11 +173,23 @@ router.post('/free-trade-comment', (req,res) =>{
 	}
 });
 
-router.get('/free-trades', (req,res)=>{ 
-	try{
-		Trade.countDocuments().then((totalCount)=>{
+
+router.get('/trade-by-user/:userId', (req,res)=>{
+	NorrUser.findOne({"_id": req.params.userId})
+	.then(user =>{
+		getTrades(req,res); 
+	})
+
+})
+
+var userId = {tradeUser:""}
+
+var getTrades = function (req,res){ 
+	
+	userId.tradeUser = (req.params.userId?req.params.userId:null);
+	((null!= userId.tradeUser)? Trade.countDocuments(userId):Trade.countDocuments()).then((totalCount)=>{
 			var skipValue =Number(req.query.nbPerPage);//Number(req.query.pageNumber) > 0 ? Math.ceil( Number(req.query.pageNumber) + Number(req.query.nbPerPage) +1) : 0;// (Number(req.query.pageNumber) > 0 ? ( ( Number(req.query.pageNumber) - 1 ) * Number(req.query.nbPerPage) ) : 0);
-			Trade.find()
+			((null!= userId.tradeUser)?Trade.find(userId):Trade.find())
              .skip( Number(req.query.pageNumber) *skipValue )
              .sort(sortedElementOrder(req.query.criteria))
              .limit( Number(req.query.nbPerPage) ).populate('tradeUser').then( trades =>{
@@ -187,9 +202,15 @@ router.get('/free-trades', (req,res)=>{
 
 				res.json(norrLabTrades);
 			}).catch(err =>{
-				console.log(err)
+				console.log(err);
+				res.status(500).json("internal server error");
 			})
 		})
+}
+
+router.get('/free-trades', (req,res)=>{ 
+	try{
+		getTrades(req,res);
 	}catch(error){
 		console.log(error)
 	}

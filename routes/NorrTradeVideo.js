@@ -44,6 +44,12 @@ commentComment:"any"
 *=================================================*/
 
 router.get('/comment/reply/:commentId',(req,res) =>{
+	NorrUserVideoComment.findOne({norrUser:req.body.videoUserLike.norrUser,norrVideo:req.body.videoUserLike.norrVideo}).
+	then( comment =>{
+		
+	}).catch( err =>{
+		console.log(err)
+	})
 	return res.status(200).json(fack)
 } )
 
@@ -51,6 +57,7 @@ router.get('/comment/reply/:commentId',(req,res) =>{
 router.get('/comments',(req,res)=>{
 		NorrTradeVideoComment.find({"videoCommentVideo":req.query.videoId})
 		.populate('videoCommentUser')
+		.sort({"videoCommentDate":-1})
 		.then( function (comments) {
 			if(comments	== null) {
 
@@ -95,6 +102,19 @@ router.post('/analytics',(req,res)=>{
 
 router.get('/analytics/:videoId',(req,res)=>{
 	NorrUserVideoViewDay.find({"videoId":req.params.videoId})
+	.then( function (viewVideo) {
+		// body...
+		res.status(200).json(viewVideo);
+	},function (err) {
+		// body...
+		res.sendStatus(400);
+	} ).catch( err =>{
+		console.log(err)
+	})
+})
+
+router.get('/analytics',(req,res)=>{
+	NorrUserVideoViewDay.find({})
 	.then( function (viewVideo) {
 		// body...
 		res.status(200).json(viewVideo);
@@ -175,7 +195,43 @@ router.get('/', (req,res) =>{
 		}
 	})
 })
+//get videos by user
+/*userId
+currentPage
+chunk
+criteria*/
+var norrLabVideos={
+				message:String,
+				data:[],
+				access:Boolean,
+				totalCount:Number
+			}
 
+router.get('/:userId',(req,res) =>{
+	NorrTradeVideo.countDocuments({"videoUser": req.query.userId}).then((totalCount)=>{
+		var currentPage= Number(req.query.currentPage)
+		var chunk= Number(req.query.chunk)
+		var criteria= Number(req.query.criteria) 
+
+		var skip = Number(chunk*currentPage);
+		if(skip => totalCount)
+			skip = 0;
+
+		NorrTradeVideo.find({"videoUser":  req.query.userId})
+		.skip(skip)
+		.limit(chunk)
+		.sort({videoDate:-1})
+		.exec((err,videos) =>{ 
+			norrLabVideos.data = videos;
+			norrLabVideos.totalCount = totalCount;
+			norrLabVideos.restedTotalCount = Math.ceil(totalCount / chunk);
+			res.status(200).json(norrLabVideos)
+		}) 
+	}).catch(err =>{
+			console.log(err);
+			res.status(500).json({"error":"internal server error while getting video"})
+		}) 
+} )
 
 var store = multer.diskStorage({
 	destination:function (req,file,cb) {
