@@ -66,7 +66,25 @@ router.post('/subscribers',(req,res) =>{
 	}, err =>{
 		res.status(500).json(err.message)
 	})
-}) 
+})
+
+/**===================================================
+*
+*					User UPDATE
+*======================================================*/
+router.patch('/update-user', (req,res) =>{
+
+		NorrUser.update({"_id":req.body._id},req.body)
+		.then(user =>{
+			res.status(200).json(user)
+		}, err =>{
+			res.status(500).json(err)
+		}).catch(err=>{
+			console.log(err)
+			res.sendStatus(500);
+		} )
+
+})
 
 /**===================================================
 *

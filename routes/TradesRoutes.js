@@ -121,6 +121,19 @@ router.get('/free-trade-detail', (req,res)=>{
 	}
 });
 
+router.patch('/free-trade-detail',(req, res)=>{
+    var tradeId = req.body._id;
+    var body = req.body;
+    delete body["_id"];
+    Trade.updateOne({"_id":tradeId}, body,function(err, tradeDetail){
+        if(err){
+            res.status(500).json(err);
+        }else{
+            res.status(200).json(tradeDetail);
+        }
+    })
+} )
+
 //create treadDetail
 router.post('/free-trade-detail', (req,res)=>{ 
 	try{ 

@@ -32,7 +32,9 @@ var TradeSchema = new mongoose.Schema({
 	tradeDetail:{
 		type:mongoose.Schema.Types.ObjectId,
 		ref:'TradeDetail'		
-	}
+	},
+     norrlabTradeLikes:Number,
+     norrlabTradeDislikes:Number
 }); 
 
 TradeSchema.virtual('norrUser',{

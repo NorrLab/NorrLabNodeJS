@@ -8,6 +8,7 @@ var NorrUserSchema = new mongoose.Schema({
 	city:String,
 	userRole:String,
 	userPictureUrl:String,
+	userBackgroundUrl:String,
 	userCreationDate:Date,
 	userFollowers:[{
 		type:mongoose.Schema.Types.ObjectId,
