@@ -71,10 +71,11 @@ app.use('/user', require('./routes/TradesRoutes'));
 app.use('/norr-user', require('./routes/NorrUserRoutes'));
 app.use('/norr-video', require('./routes/NorrTradeVideo'));             
 app.use('/comment',require('./routes/NorrCommentRoute'));
-app.use('/tradeswsdl',require('./routes/ws/tradesactivity/TradeActivity.js'));// 
+app.use('/tradeswsdl',require('./routes/ws/tradesactivity/TradeActivity.js'));//
+app.use('/mail-service',require('./routes/NorrMailRoute.js'));//
 
 //Learning how to serve video from server.
-app.use('norrlab-videos', require('./routes/NorrUserRoutes'))
+app.use('norrlab-videos', require('./routes/NorrUserRoutes'));
 
 app.use(express.static(__dirname + '/public')); 
  
