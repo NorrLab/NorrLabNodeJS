@@ -12,7 +12,7 @@ var NorrMailSchema = new mongoose.Schema({
 		type:mongoose.Schema.Types.ObjectId,
 		ref:'NorrUser'
 	},
-	commentDate:Date,
+	date:Date,
 })
 
 var NorrMail = mongoose.model('NorrMail', NorrMailSchema);
