@@ -23,7 +23,7 @@
     "cors": "^2.8.5",
     "daterangepicker": "^3.0.3",
     "express": "^4.16.3",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "jsonwebtoken": "^8.3.0",
     "log-timestamp": "^0.3.0",
     "moment": "^2.24.0",
