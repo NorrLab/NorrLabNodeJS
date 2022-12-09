@@ -22,7 +22,7 @@
     "connect-multiparty": "^2.1.1",
     "cors": "^2.8.5",
     "daterangepicker": "^3.0.3",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "jquery": "^3.3.1",
     "jsonwebtoken": "^8.3.0",
     "log-timestamp": "^0.3.0",
